@@ -6,7 +6,9 @@ Es handelt sich um eine Filament Management App die mit Xamarin.Forms umgesetzt 
 # Voraussetzungen:
 
 -Visual Studio
+
 -Mobile-Entwicklung mit .Net Workload
+
 -Google Android Emulator (für die Nutzung eines Emulators)
 
 
