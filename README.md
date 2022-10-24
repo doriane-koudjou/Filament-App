@@ -26,5 +26,7 @@ start FilamentManagement/FilamentManagement.sln
 # Anmerkung
 
 Die App wurde ausschließlich unter Android entwickelt und getestet. Somit bietet die Readme keine nähere Beschreibung zum Aufsetzen eines lauffähigen Projektes unter einem iOS Gerät.
+
 Das Starten der Anwendung kann beim initialen Laden auf Grund des Deployments länger benötigen.
+
 Bei einem Hinzufügen oder Herausnehmen eines Filaments in bzw. aus einer Maschine wird jeweils eine MQTT Nachricht zu dem Server broker.hivemq.com auf der Topic thm/sfm/filament-management gesendet. Das hierbei eingehaltene Json Format der Payload entspricht dem Datenmodell *RecordNotification.
