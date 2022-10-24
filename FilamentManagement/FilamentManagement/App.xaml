@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilamentManagement.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Color Theme scheme according to Google -->
+            <Color x:Key="Primary">#17141F</Color>
+            <Color x:Key="PrimaryVariant">#333</Color>
+            <Color x:Key="Secondary">#333</Color>
+            <Color x:Key="Background">#110F16</Color>
+            <Color x:Key="Surface">#17141F</Color>
+            <Color x:Key="Error">#333</Color>
+            <Color x:Key="OnPrimary">#FFF</Color>
+            <Color x:Key="OnSecondary">#FFF</Color>
+            <Color x:Key="OnBackground">#FFF</Color>
+            <Color x:Key="OnSurface">#FFF</Color>
+            <Color x:Key="OnError">#333</Color>
+
+            <Color x:Key="Border">#352F47</Color>
+            <Color x:Key="Highlight">#FFF175</Color>
+            <Color x:Key="Placeholder">#645a7d</Color>
+
+            <Style x:Key="frameStyle" TargetType="Frame">
+                <Setter Property="BorderColor" Value="{StaticResource Border}"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource Background}"></Setter>
+                <Setter Property="Padding" Value="5,5"></Setter>
+                <Setter Property="Margin" Value="10,0,10,5"></Setter>
+                <Setter Property="CornerRadius" Value="4"></Setter>
+            </Style>
+
+            <Style x:Key="iconframeStyle" TargetType="Frame">
+               <Setter Property="BackgroundColor" Value="{StaticResource Background}"></Setter>
+                <Setter Property="Padding" Value="0"></Setter>
+                <Setter Property="Margin" Value="0"></Setter>
+                <Setter Property="CornerRadius" Value="100"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="IsClippedToBounds" Value="True"></Setter>
+                <Setter Property="TranslationY" Value="0"></Setter>
+            </Style>
+
+            <Style x:Key="imageStyle" TargetType="Image">
+                <Setter Property="WidthRequest" Value="64"></Setter>
+                <Setter Property="HeightRequest" Value="64"></Setter>
+            </Style>
+
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="{StaticResource Placeholder}"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource OnSecondary}"></Setter>
+                <Setter Property="ReturnType" Value="Next"></Setter>
+            </Style>
+
+            <Style x:Key="unitStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Highlight}"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+            </Style>
+
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource OnBackground}"></Setter>
+                <Setter Property="Padding" Value="2"></Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+            </Style>
+
+            <Style x:Key="sectionTitle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource OnBackground}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+
+            <Style  x:Key="imagebuttonStyle" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource Background}"></Setter>
+                <Setter Property="HeightRequest" Value="40"></Setter>
+                <Setter Property="WidthRequest" Value="40"></Setter>
+                <Setter Property="Padding" Value="0"></Setter>
+                <Setter Property="Margin" Value="5"></Setter>
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="CornerRadius" Value="100"></Setter>
+            </Style>
+
+            <Style TargetType="Button">
+                
+                <!--
+                <Setter Property="TextColor" Value="{StaticResource Highlight}"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource Background}"></Setter>
+                -->
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{StaticResource OnPrimary}"/>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <!-- //TODO fix the buttons with the colors if can't be fixed then set textcolor to correct color
+                 // also adjust the colors on top styles so it's prettier :D
+                 // change the cross to minus
+                 // adjust the + on equip filament in detailmachinepage
+            -->
+            <Style x:Key="buttonStyle" TargetType="Button" >
+                <Setter Property="VerticalOptions" Value="Center"></Setter>
+                <Setter Property="HorizontalOptions" Value="Center"></Setter>
+                <Setter Property="CornerRadius" Value="100" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="10" />
+
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

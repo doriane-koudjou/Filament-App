@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilamentManagement.Views.DetailFilamentPage"
+             Title="{Binding DisplayedFilament.Name}">
+
+
+    <ContentPage.Content>
+        <StackLayout Spacing="25" BackgroundColor="{StaticResource Surface}">
+            <!-- Header -->
+            <StackLayout Orientation="Vertical" BackgroundColor="{StaticResource Background}" Padding="25">
+                <StackLayout Orientation="Horizontal">
+                    <Frame Style="{StaticResource iconframeStyle}" BackgroundColor="{StaticResource Surface}" Padding="10" Margin="0" HasShadow="False" CornerRadius="100" VerticalOptions="Center" HorizontalOptions="StartAndExpand" IsClippedToBounds="True">
+                        <Image Style="{StaticResource imageStyle}" Source="palette.png" WidthRequest="48" HeightRequest="48"/>
+                    </Frame>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                        <ImageButton WidthRequest="32" Padding="4" Source="edit.png" BackgroundColor="Transparent" Command="{Binding EditFilamentNavigator}" />
+                        <ImageButton WidthRequest="32" Padding="4" Source="trash.png" BackgroundColor="Transparent" Command="{Binding DeleteFilamentCommand}" />
+                    </StackLayout>
+                </StackLayout>
+
+                <Grid Margin="0, 14">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Orientation="Horizontal" Spacing="0" Grid.Column="0">
+                        <Label FontAttributes="Bold" TextColor="#FFF" Text="{Binding DisplayedFilament.Name}"/>
+                        <Label TextColor="#FFF175"  Text="{Binding DisplayedFilament.Id, StringFormat='#{0:F0}'}"/>
+                    </StackLayout>
+
+                    <Label TextColor="{StaticResource OnBackground}" Text="{Binding DisplayedFilament.Producer, StringFormat='by {0:F0}'}" Grid.Column="1" HorizontalOptions="End"/>
+                </Grid>
+
+                <StackLayout Spacing="0">
+                    <Rectangle HeightRequest="4" BackgroundColor="{Binding DisplayedFilament.Color}" Margin="0, 0, 0, 4" />
+                    <Label TextColor="{StaticResource Border}" Text="{Binding DisplayedFilament.Color}"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Padding="25, 0" IsVisible="{Binding MachineIsVisible}">
+                <Label Style="{StaticResource sectionTitle}" Text="Equipped within"/>
+
+                <StackLayout Orientation="Horizontal"  BackgroundColor="{StaticResource Background}" Padding="24"  Spacing="0">
+                    <Label FontAttributes="Bold" TextColor="#FFF" Text="{Binding MachineName}"/>
+                    <Label TextColor="#FFF175"  Text="{Binding MachineId, StringFormat='#{0:F0}'}"/>
+                </StackLayout>
+            </StackLayout>
+
+            <ScrollView Padding="25, 0" Margin="0, 0, 0, 25">
+                <StackLayout>
+                    <Label Style="{StaticResource sectionTitle}" Text="Extra information"/>
+                    <StackLayout Orientation="Horizontal" Padding="12" BackgroundColor="{StaticResource Background}">
+                        <Label Style="{StaticResource labelStyle}" Text="Material:"/>
+                        <Label Style="{StaticResource labelStyle}" Text="{Binding DisplayedFilament.Material}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Background}" Padding="12">
+                        <Label Style="{StaticResource labelStyle}" Text="Batch:"/>
+                        <Label Style="{StaticResource labelStyle}" Text="{Binding DisplayedFilament.Batch}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Background}" Padding="12">
+                        <Label Style="{StaticResource labelStyle}" Text="Filament Diameter:"/>
+                        <Label Style="{StaticResource labelStyle}" Text="{Binding DisplayedFilament.Diameter}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Background}" Padding="12">
+                        <Label Style="{StaticResource labelStyle}" Text="Nozzle Temperature:"/>
+                        <Label Style="{StaticResource labelStyle}" Text="{Binding DisplayedFilament.NozzleTemperature}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Background}" Padding="12">
+                        <Label Style="{StaticResource labelStyle}" Text="Nozzle Temperature Tolerance:"/>
+                        <Label Style="{StaticResource labelStyle}" Text="{Binding DisplayedFilament.NozzleTemperatureTolerance}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Background}" Padding="12">
+                        <Label Style="{StaticResource labelStyle}" Text="Heatbed Temperature"/>
+                        <Label Style="{StaticResource labelStyle}" Text="{Binding DisplayedFilament.HeatbedTemperature}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Background}" Padding="12">
+                        <Label Style="{StaticResource labelStyle}" Text="Heatbed Temperature Tolerance:"/>
+                        <Label Style="{StaticResource labelStyle}" Text="{Binding DisplayedFilament.HeatbedTemperatureTolerance}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Background}" Padding="12">
+                        <Label Style="{StaticResource labelStyle}" Text="Weight:"/>
+                        <Label Style="{StaticResource labelStyle}" Text="{Binding DisplayedFilament.Weight}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Background}" Padding="12">
+                        <Label Style="{StaticResource labelStyle}" Text="Length:"/>
+                        <Label Style="{StaticResource labelStyle}" Text="{Binding DisplayedFilament.Length}"></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

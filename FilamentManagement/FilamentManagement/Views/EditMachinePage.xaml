@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilamentManagement.Views.EditMachinePage"
+             xmlns:vm="clr-namespace:FilamentManagement.ViewModels"
+             Title="{Binding Name, StringFormat='{0:F0} Edit'}">
+
+    <ContentPage.BindingContext>
+        <vm:EditMachineViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource Background}"/>
+                <Setter Property="BorderColor" Value="{StaticResource Border}"/>
+                <Setter Property="Padding" Value="7"/>
+                <Setter Property="Margin" Value="0, 0, 0, 14"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Background}" Padding="25">
+            <ScrollView>
+                <!-- Full Page -->
+                <StackLayout Spacing="0">
+
+                    <!-- Owner -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Owner"  Text="{Binding Owner}"></Entry>
+                    </Frame>
+
+                    <!-- Name -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Name" Text="{Binding Name}"></Entry>
+                    </Frame>
+
+                    <!-- Manufacturer -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Manufacturer" Text="{Binding Brand}"></Entry>
+                    </Frame>
+
+                    <!-- Model -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Model"  Text="{Binding Model}"></Entry>
+                    </Frame>
+
+                    <!-- Filament Diameter -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Filament Diameter" Text="{Binding FilamentDiameter}" Keyboard="Numeric"
+                               VerticalOptions="Center" HorizontalOptions="Start"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="mm" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Max. Nozzle Temperature -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Max. Nozzle Temperature" Text="{Binding MaxNozzleTemperature}" Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Max. Heatbed Temperature -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Max. Heatbed Temperature" Text="{Binding MaxHeatbedTemperature}" Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- SpoolCount -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Spool Count" Text="{Binding SpoolCount}" Keyboard="Numeric"></Entry>
+                    </Frame>
+
+                    <!-- Description -->
+                    <Frame Style="{StaticResource frameStyle}"  HeightRequest="100">
+                        <!--<Entry Style="{StaticResource entryStyle}" Placeholder="Description" Text="{Binding Description}" VerticalTextAlignment="Start"></Entry>-->
+                        <Editor AutoSize="TextChanges" Text="{Binding Description}"
+                            TextColor ="{StaticResource OnBackground}" Placeholder="Description" PlaceholderColor="{StaticResource Placeholder}"/>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- //TODO button Binding ist falsch und am besten das code von add machine page nochmal neu kopieren und den button binding ändern -->
+            <!-- Add Machine Button -->
+            <Button Text="Update Machine" Command="{Binding EditMachineCommand}" Style="{StaticResource buttonStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

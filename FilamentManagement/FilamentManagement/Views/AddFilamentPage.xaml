@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilamentManagement.Views.AddFilamentPage"
+             xmlns:vm="clr-namespace:FilamentManagement.ViewModels"
+             Title="Add Filament"
+             >
+
+    <ContentPage.BindingContext>
+        <vm:AddFilamentViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Background}" Padding="25">
+            <ScrollView>
+                <!-- Full Page -->
+                <StackLayout Spacing="0">
+                    <!-- Name -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Name" Text="{Binding Name}"></Entry>
+                    </Frame>
+
+                    <!-- Producer -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Producer" Text="{Binding Producer}"></Entry>
+                    </Frame>
+
+                    <!-- Material -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Material" Text="{Binding Material}"></Entry>
+                    </Frame>
+
+                    <!-- Color -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Color" Text="{Binding Color}"></Entry>
+                    </Frame>
+
+                    <!-- Batch -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Batch" Text="{Binding Batch}"></Entry>
+                    </Frame>
+
+                    <!-- Filament Diameter -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Filament Diameter" Text="{Binding Diameter}" Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="mm" VerticalOptions="Center" HorizontalOptions="End" />
+
+                        </Grid>
+                    </Frame>
+
+                    <!-- Nozzle Temperature -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Nozzle Temperature" Text="{Binding NozzleTemperature}"  Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Nozzle Temperature Tolerance -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Nozzle Temperature Tolerance" Text="{Binding NozzleTemperatureTolerance}"  Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Heatbed Temperature -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Heatbed Temperature" Text="{Binding HeatbedTemperature}"  Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" VerticalOptions="Center" HorizontalOptions="End"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <!-- Heatbed Temperature Tolerance -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Heatbed Temperature Tolerance" Text="{Binding HeatbedTemperatureTolerance}"  Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" VerticalOptions="Center" HorizontalOptions="End"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <!-- Weight -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Weight" Text="{Binding Weight}"  Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="g" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Length -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Length" Text="{Binding Length}"  Keyboard="Numeric" ReturnType="Next"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="m" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Add Filament Button -->
+            <Button Style="{StaticResource buttonStyle}" Text="Add Filament" Command="{Binding AddFilamentCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

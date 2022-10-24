@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilamentManagement.Views.AddMachinePage"
+             xmlns:vm="clr-namespace:FilamentManagement.ViewModels"
+             Title="Add Machine"
+             >
+
+    <ContentPage.BindingContext>
+        <vm:AddMachineViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Background}" Padding="25">
+            <ScrollView>
+                <!-- Full Page -->
+                <StackLayout Spacing="0">
+                    <!-- Owner -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Owner"  Text="{Binding Owner}"></Entry>
+                    </Frame>
+
+                    <!-- Name -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Name" Text="{Binding Name}"></Entry>
+                    </Frame>
+
+                    <!-- Manufacturer -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Manufacturer" Text="{Binding Brand}"></Entry>
+                    </Frame>
+
+                    <!-- Model -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Model"  Text="{Binding Model}"></Entry>
+                    </Frame>
+
+                    <!-- Filament Diameter -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Filament Diameter" Text="{Binding FilamentDiameter}" Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="mm" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Max. Nozzle Temperature -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}"  Grid.Row="0" Grid.Column="0" Placeholder="Max. Nozzle Temperature" Text="{Binding MaxNozzleTemperature}" Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Max. Heatbed Temperature -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Max. Heatbed Temperature" Text="{Binding MaxHeatbedTemperature}" Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" VerticalOptions="Center" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- SpoolCount -->
+                    <Frame Style="{StaticResource frameStyle}" >
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Spool Count" Text="{Binding SpoolCount}" Keyboard="Numeric"></Entry>
+                    </Frame>
+
+                    <!-- Description -->
+                    <Frame Style="{StaticResource frameStyle}" HeightRequest="100">
+                        <Editor  AutoSize="TextChanges" Text="{Binding Description}"
+                             TextColor="{StaticResource OnBackground}" Placeholder="Description" PlaceholderColor="{StaticResource Placeholder}"/>
+                    </Frame>
+
+                    <!-- Add Machine Button -->
+                </StackLayout>
+
+            </ScrollView>
+
+            <Button Style="{StaticResource buttonStyle}" Text="Add Machine" Command="{Binding AddMachineCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

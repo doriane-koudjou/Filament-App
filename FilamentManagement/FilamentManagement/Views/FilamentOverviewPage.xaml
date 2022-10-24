@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilamentManagement.Views.FilamentOverviewPage"
+             xmlns:vm="clr-namespace:FilamentManagement.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Background}">
+            <StackLayout>
+                <Frame Margin="0, 12, 0, 0" Padding="24, 0" BackgroundColor="{StaticResource Background}" HasShadow="False">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="45"/>
+                            <ColumnDefinition Width="45"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Entry TextColor="White" Grid.Column="0" HorizontalTextAlignment="Start" 
+                               VerticalOptions="Center" PlaceholderColor="LightGray" Placeholder="Search by name" Text="{Binding SearchInput}"/>
+                        <ImageButton Grid.Column="1" Source="search.png" BackgroundColor="Transparent" Command="{Binding SearchCommand}" WidthRequest="32" Padding="4"/>
+                        <ImageButton Grid.Column="2" Source="plus.png" BackgroundColor="Transparent" Command="{Binding AddFilamentNavigator}" WidthRequest="32" Padding="4"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+
+            <CollectionView ItemsSource="{Binding FilamentCollection}" ItemsLayout="VerticalGrid, 1" 
+                                SelectionMode="Single" SelectedItem="{Binding SelectedFilament}" SelectionChangedCommand="{Binding FilamentTappedCommand}">
+
+                <CollectionView.EmptyView>
+                    <!-- If the dataset is empty -->
+                    <Grid>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="You currently have no filaments to be displayed.
+                                       Consider creating a new filament." TextColor="{StaticResource Highlight}" HorizontalTextAlignment="Center"></Label>
+
+                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0, 24">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AddFilamentNavigator}"/>
+                                </StackLayout.GestureRecognizers>
+
+                                <Image Source="plus.png" VerticalOptions="Center" WidthRequest="24"/>
+                                <Label Text="Create a new filament" VerticalOptions="Center" HorizontalOptions="Start" TextColor="{StaticResource OnBackground}" FontAttributes="Bold"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="24, 4">
+                            <Frame Margin="0" Padding="0" BackgroundColor="{StaticResource Background}" HasShadow="False">
+                                <Grid BackgroundColor="{StaticResource Surface}" Padding="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Column="0" BackgroundColor="{StaticResource Background}"
+                                           Padding="10" Margin="0" HasShadow="False" CornerRadius="100" VerticalOptions="Center" HorizontalOptions="Center" IsClippedToBounds="True">
+                                        <Image Source="palette.png" WidthRequest="32" HeightRequest="32"/>
+                                    </Frame>
+
+                                    <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" Spacing="0" Margin="12, 0, 0, 0">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label FontAttributes="Bold" TextColor="#FFF" Text="{Binding Name}"/>
+                                            <Label TextColor="#FFF175"  Text="{Binding Id, StringFormat='#{0:F0}'}"/>
+                                        </StackLayout>
+
+                                        <Label TextColor="{StaticResource OnSurface}" LineBreakMode="TailTruncation" Text="{Binding Producer, StringFormat='by {0:F0}'}"/>
+                                        <Rectangle Margin="0, 10, 0, 0" WidthRequest="500" HeightRequest="2" BackgroundColor="{Binding Color}"></Rectangle>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

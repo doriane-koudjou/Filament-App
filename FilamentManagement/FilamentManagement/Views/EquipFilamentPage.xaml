@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:FilamentManagement.Views"
+             x:Class="FilamentManagement.Views.EquipFilamentPage"
+             Title="Filament Selection">
+
+
+
+    <ContentPage.Content>
+        <StackLayout Spacing="25" BackgroundColor="{StaticResource Surface}">
+            <StackLayout Orientation="Vertical" BackgroundColor="{StaticResource Background}" Padding="25">
+                <StackLayout Orientation="Horizontal">
+                    <Frame Style="{StaticResource iconframeStyle}" BackgroundColor="{StaticResource Surface}" Padding="10" Margin="0" HasShadow="False" CornerRadius="100" VerticalOptions="Center" HorizontalOptions="StartAndExpand" IsClippedToBounds="True">
+                        <Image Style="{StaticResource imageStyle}" Source="printer.png" WidthRequest="48" HeightRequest="48"/>
+                    </Frame>
+
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="End" Spacing="0">
+                        <StackLayout Orientation="Horizontal" Spacing="0" Grid.Column="0" Grid.Row="0">
+                            <Label FontAttributes="Bold" TextColor="#FFF" Text="{Binding DisplayedMachine.Name}"/>
+                            <Label TextColor="#FFF175"  Text="{Binding DisplayedMachine.Id, StringFormat='#{0:F0}'}"/>
+                        </StackLayout>
+                        <Label TextColor="{StaticResource OnBackground}" Text="{Binding DisplayedMachine.Owner, StringFormat='by {0:F0}'}"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <ScrollView Padding="25, 0" Margin="0, 0, 0, 25">
+                <StackLayout>
+                    <Label Style="{StaticResource sectionTitle}" Text="Select a filament"/>
+                    <CollectionView ItemsSource="{Binding EquipableFilaments}" ItemsLayout="VerticalGrid" 
+                                SelectionMode="Single" SelectedItem="{Binding SelectedFilament}" SelectionChangedCommand="{Binding FilamentTappedCommand}" >
+
+                        <CollectionView.EmptyView>
+                            <Label Style="{StaticResource labelStyle}" Text="Add a filament" TextColor="#FFF"></Label>
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="0" Padding="4" BackgroundColor="{StaticResource Surface}" HasShadow="False">
+                                    <Grid BackgroundColor="{StaticResource Background}" Padding="16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="200"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame Grid.Column="0" BackgroundColor="{StaticResource Surface}"
+                                           Padding="10" Margin="0" HasShadow="False" CornerRadius="100" VerticalOptions="Center" HorizontalOptions="Center" IsClippedToBounds="True">
+                                            <Image Source="palette.png" WidthRequest="32" HeightRequest="32"/>
+                                        </Frame>
+
+                                        <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" Spacing="0" Margin="12, 0, 0, 0">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label FontAttributes="Bold" TextColor="#FFF" Text="{Binding Name}"/>
+                                                <Label TextColor="#FFF175"  Text="{Binding Id, StringFormat='#{0:F0}'}"/>
+                                            </StackLayout>
+
+                                            <Label TextColor="{StaticResource OnSurface}" LineBreakMode="TailTruncation" Text="{Binding Producer, StringFormat='by {0:F0}'}"/>
+                                            <Rectangle Margin="0, 10, 0, 0" WidthRequest="200" HeightRequest="2" BackgroundColor="{Binding Color}"></Rectangle>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        
+        <!--<ScrollView >
+
+            <StackLayout BackgroundColor="{StaticResource Surface}" Spacing="0">
+
+
+                <StackLayout BackgroundColor="{StaticResource Background}" HeightRequest="60" Margin="0" Padding="0">
+                    <Frame Style="{StaticResource iconframeStyle}">
+                        <Image Style="{StaticResource imageStyle}" Source="printer.png"/>
+                    </Frame>
+                </StackLayout>
+                
+                <StackLayout HeightRequest="60" Margin="0" Padding="0">
+
+                </StackLayout>
+
+
+                <Frame Style="{StaticResource frameStyle}" >
+                    
+                    <CollectionView ItemsSource="{Binding EquipableFilaments}" ItemsLayout="VerticalGrid" 
+                                SelectionMode="Single" SelectedItem="{Binding SelectedFilament}" SelectionChangedCommand="{Binding FilamentTappedCommand}" >
+
+                        <CollectionView.EmptyView>
+                            <Label Style="{StaticResource labelStyle}" Text="Add a filament" TextColor="#FFF"></Label>
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="4">
+                                    <Frame Style="{StaticResource frameStyle}" CornerRadius="4" BackgroundColor="{StaticResource Surface}" BorderColor="{StaticResource Border}" Padding="0"  Margin="0">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Frame Style="{StaticResource frameStyle}" BackgroundColor="{StaticResource Background}" CornerRadius="100" Padding="0" Margin="20" IsClippedToBounds="True" WidthRequest="48" HeightRequest="48">
+                                                <Image Source="palette.png" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="32" HeightRequest="32"/>
+                                            </Frame>
+
+                                            <StackLayout VerticalOptions="Center">
+                                                <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                                                    <Label Style="{StaticResource labelStyle}" TextColor="#FFF" Text="{Binding Name}"/>
+                                                    <Label Style="{StaticResource labelStyle}" TextColor="#FFF175"  Text="{Binding Id, StringFormat='#{0:F0}'}"/>
+                                                </StackLayout>
+
+                                                <Label Style="{StaticResource labelStyle}" TextColor="#FFF"  Text="{Binding Producer, StringFormat='by {0:F0}'}"/>
+                                                <Rectangle Margin="0, 10, 0, 0" WidthRequest="120" HeightRequest="2" BackgroundColor="{Binding Color}"></Rectangle>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </Frame>
+
+             
+
+            </StackLayout>
+        </ScrollView>-->
+
+       
+    </ContentPage.Content>
+
+</ContentPage>

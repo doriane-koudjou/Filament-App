@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilamentManagement.Views.EditFilamentPage"
+             xmlns:vm="clr-namespace:FilamentManagement.ViewModels"
+             Title="{Binding Name, StringFormat='{0:F0} Edit'}">
+
+    <ContentPage.BindingContext>
+        <vm:EditFilamentViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource Background}"/>
+                <Setter Property="BorderColor" Value="{StaticResource Border}"/>
+                <Setter Property="Padding" Value="7"/>
+                <Setter Property="Margin" Value="0, 0, 0, 14"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Background}" Padding="25">
+            <ScrollView >
+                <!-- Full Page -->
+                <StackLayout Spacing="0">
+                    <!-- Name -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Name" Text="{Binding Name}"></Entry>
+                    </Frame>
+
+                    <!-- Producer -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Producer" Text="{Binding Producer}"></Entry>
+                    </Frame>
+
+                    <!-- Material -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Material" Text="{Binding Material}"></Entry>
+                    </Frame>
+
+                    <!-- Color -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Color" Text="{Binding Color}"></Entry>
+                    </Frame>
+
+                    <!-- Batch -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Entry Style="{StaticResource entryStyle}" Placeholder="Batch" Text="{Binding Batch}"></Entry>
+                    </Frame>
+
+                    <!-- Filament Diameter -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Filament Diameter" Text="{Binding Diameter}" Keyboard="Numeric"
+                               VerticalOptions="Center" HorizontalOptions="Start"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="mm" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Nozzle Temperature -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Nozzle Temperature" Text="{Binding NozzleTemperature}"  Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" HorizontalOptions="End" VerticalOptions="Center"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <!-- Nozzle Temperature Tolerance -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Nozzle Temperature Tolerance" Text="{Binding NozzleTemperatureTolerance}"  Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" HorizontalOptions="End" VerticalOptions="Center"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <!-- Heatbed Temperature -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Heatbed Temperature" Text="{Binding HeatbedTemperature}" Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Heatbed Temperature Tolerance -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Heatbed Temperature Tolerance" Text="{Binding HeatbedTemperatureTolerance}"  Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="°C" HorizontalOptions="End" VerticalOptions="Center"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <!-- Weight -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Weight" Text="{Binding Weight}"  Keyboard="Numeric"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="g" HorizontalOptions="End" VerticalOptions="Center"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <!-- Length -->
+                    <Frame Style="{StaticResource frameStyle}">
+                        <Grid>
+                            <Entry Style="{StaticResource entryStyle}" Placeholder="Length" Text="{Binding Length}"  Keyboard="Numeric" ReturnType="Next"></Entry>
+                            <Label Style="{StaticResource unitStyle}" Text="m" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+
+            <!-- //TODO button Binding ist falsch und am besten das code von add machine page nochmal neu kopieren und den button binding ändern -->
+            <!-- Add Filament Button -->
+            <Button Text="Update Filament" Command="{Binding EditFilamentCommand}" Style="{StaticResource buttonStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

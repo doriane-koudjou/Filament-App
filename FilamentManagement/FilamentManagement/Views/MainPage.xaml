@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilamentManagement.Views.MainPage"
+             xmlns:vm="clr-namespace:FilamentManagement.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Background}" Spacing="25" Padding="25">
+            <StackLayout Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilamentOverviewNavigator}"/>
+                        </StackLayout.GestureRecognizers>
+                        
+                        <Label Text="Filament Mangement" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource sectionTitle}"/>
+                        <Image Source="arrow.png" VerticalOptions="Center" WidthRequest="24"/>
+                    </StackLayout>
+
+                    <ImageButton Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" Command="{Binding AddFilamentNavigator}" Source="plus.png" BackgroundColor="Transparent"/>
+                </Grid>
+
+                <CollectionView ItemsSource="{Binding FilamentCollection}" ItemsLayout="HorizontalGrid, 3" 
+                                SelectionMode="Single" SelectedItem="{Binding SelectedFilament}" SelectionChangedCommand="{Binding FilamentTappedCommand}">
+
+                    <CollectionView.EmptyView>
+                        <!-- If the dataset is empty -->
+                        <Grid>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                <Label Text="You currently have no filaments to be displayed.
+                                       Consider creating a new filament." TextColor="{StaticResource Highlight}" HorizontalTextAlignment="Center"></Label>
+
+                                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0, 24">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AddFilamentNavigator}"/>
+                                    </StackLayout.GestureRecognizers>
+
+                                    <Image Source="plus.png" VerticalOptions="Center" WidthRequest="24"/>
+                                    <Label Text="Create a new filament" VerticalOptions="Center" HorizontalOptions="Start" TextColor="{StaticResource OnBackground}" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="0" Padding="4" BackgroundColor="{StaticResource Background}" HasShadow="False">
+                                <Grid BackgroundColor="{StaticResource Surface}" Padding="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="200"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Column="0" BackgroundColor="{StaticResource Background}"
+                                           Padding="10" Margin="0" HasShadow="False" CornerRadius="100" VerticalOptions="Center" HorizontalOptions="Center" IsClippedToBounds="True">
+                                        <Image Source="palette.png" WidthRequest="32" HeightRequest="32"/>
+                                    </Frame>
+
+                                    <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" Spacing="0" Margin="12, 0, 0, 0">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label FontAttributes="Bold" TextColor="#FFF" Text="{Binding Name}"/>
+                                            <Label TextColor="#FFF175"  Text="{Binding Id, StringFormat='#{0:F0}'}"/>
+                                        </StackLayout>
+
+                                        <Label TextColor="{StaticResource OnSurface}" LineBreakMode="TailTruncation" Text="{Binding Producer, StringFormat='by {0:F0}'}"/>
+                                        <Rectangle Margin="0, 10, 0, 0" WidthRequest="200" HeightRequest="2" BackgroundColor="{Binding Color}"></Rectangle>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+            <!-- -->
+            
+            <StackLayout BackgroundColor="{StaticResource Background}" Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding MachineOverviewNavigator}"/>
+                        </StackLayout.GestureRecognizers>
+
+                        <Label Text="Printer Machines" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource sectionTitle}"/>
+                        <Image Source="arrow.png" VerticalOptions="Center" WidthRequest="24"/>
+                    </StackLayout>
+
+                    <ImageButton Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="24" Command="{Binding AddMachineNavigator}" Source="plus.png" BackgroundColor="Transparent"/>
+                </Grid>
+
+                <CollectionView ItemsSource="{Binding MachineCollection}" ItemsLayout="HorizontalGrid, 3" 
+                                SelectionMode="Single" SelectedItem="{Binding SelectedMachine}" SelectionChangedCommand="{Binding MachineTappedCommand}">
+
+                    <CollectionView.EmptyView>
+                        <!-- If the dataset is empty -->
+                        <Grid>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                <Label Text="You currently have no machines to be displayed.
+                                       Consider creating a new machine." TextColor="{StaticResource Highlight}" HorizontalTextAlignment="Center"></Label>
+
+                                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0, 24">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AddMachineNavigator}"/>
+                                    </StackLayout.GestureRecognizers>
+
+                                    <Image Source="plus.png" VerticalOptions="Center" WidthRequest="24"/>
+                                    <Label Text="Create a new machine" VerticalOptions="Center" HorizontalOptions="Start" TextColor="{StaticResource OnBackground}" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="0" Padding="4" BackgroundColor="{StaticResource Background}" HasShadow="False">
+                                <Grid BackgroundColor="{StaticResource Surface}" Padding="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="200"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Column="0" BackgroundColor="{StaticResource Background}"
+                                           Padding="10" Margin="0" HasShadow="False" CornerRadius="100" VerticalOptions="Center" HorizontalOptions="Center" IsClippedToBounds="True">
+                                        <Image Source="printer.png" WidthRequest="32" HeightRequest="32"/>
+                                    </Frame>
+
+                                    <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="Center" Spacing="0" Margin="12, 0, 0, 0">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label FontAttributes="Bold" TextColor="#FFF" Text="{Binding Name}"/>
+                                            <Label TextColor="#FFF175"  Text="{Binding Id, StringFormat='#{0:F0}'}"/>
+                                        </StackLayout>
+
+                                        <Label TextColor="{StaticResource OnSurface}" LineBreakMode="TailTruncation" Text="{Binding Description}"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
