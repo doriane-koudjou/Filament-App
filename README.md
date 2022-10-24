@@ -15,8 +15,6 @@ Google Android Emulator (für die Nutzung eines Emulators)
 1-Clonen des Repositories
 
 
-git clone https://git.thm.de/jsng11/filamentmanagement.git
-
 
 
 2- Öffnen des Projekts in Visual Studio
